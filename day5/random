@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# a simple utility to generate input.xyz file
+# ./random 300 10 > input.xyz
+# generate a 300 particles inside a 10x10x10 cell
+
+awk -v n=$1 -v l=$2 'BEGIN{
+  srand();
+  if(l=="") l=5
+  if(n=="") n=1
+  print n
+  print l,l,l
+  for(i=0;i<n;i++) {
+  	x = l*rand();
+  	y = l*rand();
+  	z = l*rand();
+  	print "Ar",x,y,z;
+  }
+}'
+
